@@ -1,7 +1,7 @@
-export default function Home() {
+import {Home} from "@/app/components/Home-Container/Home/Home";
+
+export default function HomePage() {
   return (
-    <div>
-      Hello from Next
-    </div>
+    <Home/>
   );
 }

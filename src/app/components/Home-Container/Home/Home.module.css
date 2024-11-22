@@ -1,0 +1,56 @@
+.homePage {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+    text-align: center;
+}
+
+.header {
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 10px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+}
+
+.description {
+    margin-top: 30px;
+    text-align: left;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.description h2, .description h3 {
+    color: #333;
+}
+
+.description a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.description ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.description ul li {
+    margin: 5px 0;
+}
+
+.footer {
+    margin-top: 30px;
+}
+
+.footer a {
+    text-decoration: none;
+}
