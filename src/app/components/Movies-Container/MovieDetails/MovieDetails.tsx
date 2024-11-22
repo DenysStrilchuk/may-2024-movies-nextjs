@@ -7,6 +7,7 @@ import {IMovie} from "@/app/models/movie-interface";
 import {Loader} from "@/app/components/common/Loader-Container";
 import Image from "next/image";
 import styles from "./MovieDetails.module.css";
+import {StarRatingComponent} from "@/app/components/common/StarRating-Container";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState<IMovie | null>(null);
@@ -56,6 +57,9 @@ const MovieDetails = () => {
           height={750}
           priority
         />
+        <div className={styles.starRatingWrapper}>
+          <StarRatingComponent rating={movie.vote_average ?? 0} size={40}/>
+        </div>
         <div className={styles.additionalInfo}>
           <p><strong>Release Year:</strong> {movie.release_date || "Unknown"}</p>
           <p><strong>Country:</strong>

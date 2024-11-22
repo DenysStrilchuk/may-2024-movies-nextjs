@@ -14,7 +14,8 @@
     "next": "15.0.3",
     "@mui/material": "^6.1.4",
     "@mui/icons-material": "^6.1.5",
-    "@emotion/styled": "^11.13.0"
+    "@emotion/styled": "^11.13.0",
+    "star-rating-react-ts": "^1.1.4"
   },
   "devDependencies": {
     "typescript": "^5",
