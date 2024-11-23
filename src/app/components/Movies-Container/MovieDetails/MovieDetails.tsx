@@ -2,12 +2,14 @@
 
 import {useEffect, useState} from "react";
 import {useParams, useRouter} from "next/navigation";
+import Image from "next/image";
+
 import {movieService} from "@/app/services/movie-service";
 import {IMovie} from "@/app/models/movie-interface";
-import {Loader} from "@/app/components/common/Loader-Container";
-import Image from "next/image";
+import {GenreBadge} from "@/app/components/common/genre-badge";
+import {Loader} from "../../common/loader";
+import {StarRatingComponent} from "../../common/star-rating";
 import styles from "./MovieDetails.module.css";
-import {StarRatingComponent} from "@/app/components/common/StarRating-Container";
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState<IMovie | null>(null);
@@ -23,6 +25,7 @@ const MovieDetails = () => {
       if (!id) return;
       setLoading(true);
       setError(null);
+
       try {
         const movieData = await movieService.getMovieById(parseInt(id as string, 10));
         const trailer = await movieService.getMovieTrailer(movieData.id);
@@ -33,9 +36,8 @@ const MovieDetails = () => {
         setLoading(false);
       }
     };
-    (async () => {
-      await fetchMovie();
-    })();
+
+    void fetchMovie();
   }, [id]);
 
   if (loading) return <Loader/>;
@@ -64,17 +66,13 @@ const MovieDetails = () => {
           <p><strong>Release Year:</strong> {movie.release_date || "Unknown"}</p>
           <p><strong>Country:</strong>
             {movie.production_countries?.length > 0
-              ? movie.production_countries.map(country => country.name).join(", ")
+              ? movie.production_countries.map((country) => country.name).join(", ")
               : "Unknown"}
-          </p>
-          <p>
-            <strong>Genre:</strong>{" "}
-            {movie.genres?.map((genre) => genre.name).join(", ") || "Unknown"}
           </p>
           <p><strong>Duration:</strong> {movie.runtime ? `${movie.runtime} min` : "Unknown"}</p>
           <p><strong>Spoken Language:</strong>
             {movie.spoken_languages?.length > 0
-              ? movie.spoken_languages.map(language => language.english_name).join(", ")
+              ? movie.spoken_languages.map((language) => language.english_name).join(", ")
               : "Unknown"}
           </p>
           <p>
@@ -97,10 +95,22 @@ const MovieDetails = () => {
             <p>Trailer unavailable</p>
           )}
         </div>
-
         <div className={styles.description}>
           <h2>Description</h2>
           <p>{movie.overview || "Description not available"}</p>
+        </div>
+        <div className={styles.genres}>
+            {movie.genres?.length ? (
+              movie.genres.map((genre) => (
+                <GenreBadge
+                  key={genre.id}
+                  genreId={genre.id}
+                  genreName={genre.name}
+                />
+              ))
+            ) : (
+              "Unknown"
+            )}
         </div>
         <button className={styles.backButton} onClick={handleBackButtonClick}>
           Back to movies

@@ -15,7 +15,9 @@
     "@mui/material": "^6.1.4",
     "@mui/icons-material": "^6.1.5",
     "@emotion/styled": "^11.13.0",
-    "star-rating-react-ts": "^1.1.4"
+    "@emotion/react": "^11.13.5",
+    "star-rating-react-ts": "^1.1.4",
+    "react-bootstrap": "^2.10.5"
   },
   "devDependencies": {
     "typescript": "^5",

@@ -96,3 +96,13 @@
     align-items: center;
     gap: 10px;
 }
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+
+

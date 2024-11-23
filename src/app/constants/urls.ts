@@ -7,7 +7,7 @@ const urls = {
     getMovieTrailer: (id:number): string => `/movie/${id}/videos`
   },
   genres: {
-    getAllGenres: '/genre/movie/list'
+    getAllGenres: '/genre/movie/list',
   }
 };
 

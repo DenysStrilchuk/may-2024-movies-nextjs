@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button} from '@mui/material';
-import {Routes} from "@/app/utils/routes";
 import Link from "next/link";
+import {Button} from '@mui/material';
+
+import {Routes} from "@/app/utils/routes";
 import styles from './Home.module.css';
 
 const Home = () => {

@@ -1,33 +1,49 @@
-"use client";
+'use client';
 
-import {useEffect, useState} from "react";
-import {useSearchParams, useRouter} from "next/navigation";
+import React, {useEffect, useState} from "react";
+import {useParams, useRouter, useSearchParams} from "next/navigation";
 import Image from "next/image";
 
-import {movieService} from "@/app/services/movie-service";
+import {genreService} from "@/app/services/genre-service";
 import {IMovie} from "@/app/models/movie-interface";
 import {Pagination} from "../../common/pagination";
 import {Loader} from "../../common/loader";
-import styles from "./MoviesList.module.css";
+import styles from './MoviesByGenre.module.css';
 
-const MoviesList = () => {
+const MoviesByGenre = () => {
+  const {genreId} = useParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const initialPage = Number(searchParams.get('page')) || 1;
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [totalPages, setTotalPages] = useState<number>(1);
-
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const page = parseInt(searchParams.get("page") || "1", 10);
+  const [page, setPage] = useState<number>(initialPage);
+  const [genreName, setGenreName] = useState<string>("");
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    if (!genreId) return;
+
+    const fetchGenreName = async () => {
+      try {
+        const genre = await genreService.getGenreById(Number(genreId));
+        setGenreName(genre.name);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("Failed to fetch genre name");
+        }
+      }
+    };
+
+    const fetchMoviesByGenre = async () => {
       setLoading(true);
       setError(null);
-
       try {
-        const response = await movieService.getAllMovies(page);
+        const response = await genreService.getMoviesByGenre(Number(genreId), page);
         setMovies(response.results);
         setTotalPages(response.total_pages);
       } catch (error: unknown) {
@@ -41,15 +57,17 @@ const MoviesList = () => {
       }
     };
 
-    void fetchMovies();
-  }, [page]);
+    void fetchGenreName();
+    void fetchMoviesByGenre();
+  }, [genreId, page]);
 
   const handlePageChange = (newPage: number) => {
-    router.push(`?page=${newPage}`);
+    setPage(newPage);
+    router.replace(`/genre/${genreId}?page=${newPage}`);
   };
 
   const handleMovieClick = (id: number) => {
-    router.push(`/movie/${id}`);
+    router.push(`/movie/${id}?fromPage=${page}`);
   };
 
   if (loading) {
@@ -61,8 +79,8 @@ const MoviesList = () => {
   }
 
   return (
-    <div className={styles.moviesListContainer}>
-      <h1>All genres</h1>
+    <div className={styles.genreMoviesListContainer}>
+      <h1>{genreName || "Movies"}</h1>
       {movies.length ? (
         <div className={styles.moviesGrid}>
           {movies.map((movie) => (
@@ -101,4 +119,4 @@ const MoviesList = () => {
   );
 };
 
-export {MoviesList};
+export {MoviesByGenre};

@@ -1,0 +1,46 @@
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genresButton {
+    padding: 10px 20px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.genresButton:hover {
+    background: #ddd;
+}
+
+.genresButton.active {
+    background: #0070f3;
+    color: white;
+}
+
+.genreDetails {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.errorText {
+    color: #d32f2f;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px auto;
+    text-align: center;
+    background: #fdecea;
+    border: 1px solid #f5c6c6;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
