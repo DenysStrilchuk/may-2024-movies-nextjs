@@ -9,6 +9,7 @@ import {IMovie} from "@/app/models/movie-interface";
 import {Pagination} from "../../common/pagination";
 import {Loader} from "../../common/loader";
 import styles from "./MoviesList.module.css";
+import {Routes} from "@/app/utils/routes";
 
 const MoviesList = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -49,7 +50,7 @@ const MoviesList = () => {
   };
 
   const handleMovieClick = (id: number) => {
-    router.push(`/movie/${id}`);
+    router.push(`${Routes.MOVIE}/${id}`);
   };
 
   if (loading) {

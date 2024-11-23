@@ -3,10 +3,11 @@
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 
-import {Genre} from "@/app/components/Genres-Container/Genre";
+import {Genre} from "@/app/components/genres/Genre";
 import {Loader} from "../../common/loader";
 import {useGenres} from "@/app/hooks/use-genres/useGenres";
 import styles from './GenresList.module.css';
+import {Routes} from "@/app/utils/routes";
 
 const GenresList = () => {
   const {genres, loading, error} = useGenres();
@@ -15,7 +16,7 @@ const GenresList = () => {
 
   const handleGenreClick = (genreId: number) => {
     setActiveGenreId(genreId);
-    router.push(`/genres/${genreId}`);
+    router.push(`${Routes.GENRES}/${genreId}`);
   };
 
   if (loading) {

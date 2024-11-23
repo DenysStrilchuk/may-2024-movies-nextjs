@@ -1,4 +1,4 @@
-import {Home} from "@/app/components/Home-Container/Home/Home";
+import {Home} from "@/app/components/home/Home/Home";
 
 export default function HomePage() {
   return (

@@ -1,4 +1,4 @@
-import {MovieDetails} from "@/app/components/Movies-Container/MovieDetails";
+import {MovieDetails} from "@/app/components/movies/MovieDetails";
 
 export default function MovieDetailsPage () {
   return (

@@ -9,6 +9,7 @@ import {IMovie} from "@/app/models/movie-interface";
 import {Pagination} from "../../common/pagination";
 import {Loader} from "../../common/loader";
 import styles from './MoviesByGenre.module.css';
+import {Routes} from "@/app/utils/routes";
 
 const MoviesByGenre = () => {
   const {genreId} = useParams();
@@ -63,11 +64,11 @@ const MoviesByGenre = () => {
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
-    router.replace(`/genre/${genreId}?page=${newPage}`);
+    router.replace(`${Routes.GENRE}/${genreId}?page=${newPage}`);
   };
 
   const handleMovieClick = (id: number) => {
-    router.push(`/movie/${id}?fromPage=${page}`);
+    router.push(`${Routes.MOVIE}/${id}?fromPage=${page}`);
   };
 
   if (loading) {

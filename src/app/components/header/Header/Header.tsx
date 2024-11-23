@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import {Button, Menu, MenuItem, TextField} from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Іконка користувача з Material UI
 
 import {Routes} from "@/app/utils/routes";
 import {Loader} from "../../common/loader";
@@ -89,6 +90,10 @@ const Header = () => {
           Search
         </Button>
       </form>
+      <div className={styles.userProfile}>
+        <AccountCircleIcon className={styles.userIcon} />
+        <span className={styles.userName}>Denys Strilchuk</span>
+      </div>
     </header>
   );
 };

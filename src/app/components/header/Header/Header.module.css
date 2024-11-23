@@ -29,3 +29,21 @@
 .searchInput {
     margin-right: 8px;
 }
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.userIcon {
+    font-size: 24px;
+    color: white;
+    margin-right: 8px;
+}
+
+.userName {
+    font-size: 16px;
+    color: white;
+}
+

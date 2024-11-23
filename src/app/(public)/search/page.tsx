@@ -1,4 +1,4 @@
-import {SearchResults} from "@/app/components/Search-Container";
+import {SearchResults} from "../../components/search";
 
 export default function SearchResultsPage () {
   return (

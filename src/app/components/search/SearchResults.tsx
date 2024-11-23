@@ -8,6 +8,7 @@ import {Loader} from "@/app/components/common/loader";
 import {Pagination} from "@/app/components/common/pagination";
 import {useSearchResults} from "@/app/hooks/use-search";
 import styles from "./SearchResults.module.css";
+import {Routes} from "@/app/utils/routes";
 
 const SearchResults = () => {
   const searchParams = useSearchParams();
@@ -26,7 +27,7 @@ const SearchResults = () => {
   } = useSearchResults({query, initialPage});
 
   const handleMovieClick = (id: number) => {
-    router.push(`/movie/${id}`);
+    router.push(`${Routes.MOVIE}/${id}`);
   };
 
   const handlePaginationChange = (page: number) => {

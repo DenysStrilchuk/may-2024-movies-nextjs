@@ -1,4 +1,4 @@
-import {MoviesByGenre} from "@/app/components/Genres-Container/MoviesByGenre/MoviesByGenre";
+import {MoviesByGenre} from "@/app/components/genres/MoviesByGenre/MoviesByGenre";
 
 export default function GenresListPage () {
   return (
