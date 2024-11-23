@@ -8,7 +8,10 @@ const urls = {
   },
   genres: {
     getAllGenres: '/genre/movie/list',
-  }
+  },
+  search: {
+    searchMovies: '/search/movie',
+  },
 };
 
 export {

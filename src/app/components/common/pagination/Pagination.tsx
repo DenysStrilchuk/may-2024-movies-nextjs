@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import React, {FC} from 'react';
 import {Pagination as MuiPagination} from '@mui/material';
 
 interface PaginationProps {
@@ -18,7 +18,7 @@ const Pagination: FC<PaginationProps> = ({currentPage, totalPages, onPageChange}
       page={currentPage}
       onChange={handlePageChange}
       color="primary"
-      siblingCount={1}
+      siblingCount={3}
     />
   );
 };

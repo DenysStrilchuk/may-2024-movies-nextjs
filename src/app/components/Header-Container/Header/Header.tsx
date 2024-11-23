@@ -3,7 +3,7 @@
 import React, {useState} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
-import {Button, Menu, MenuItem} from "@mui/material";
+import {Button, Menu, MenuItem, TextField} from "@mui/material";
 
 import {Routes} from "@/app/utils/routes";
 import {Loader} from "../../common/loader";
@@ -12,6 +12,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const {genres, loading, error} = useGenres();
   const open = Boolean(anchorEl);
   const router = useRouter();
@@ -31,7 +32,13 @@ const Header = () => {
 
   const handleGenreClick = (genreId: number) => {
     handleMenuClose();
-    router.push(`/genre/${genreId}`);
+    router.push(`${Routes.GENRE}/${genreId}`);
+  };
+
+  const handleSearchSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchQuery.trim() === "") return;
+    router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
   };
 
   return (
@@ -46,7 +53,7 @@ const Header = () => {
         <span>
           <Button
             color="inherit"
-            onMouseEnter={handleMenuOpen}
+            onClick={handleMenuOpen}
             aria-controls={open ? "genre-menu" : undefined}
             aria-haspopup="true"
           >
@@ -57,7 +64,6 @@ const Header = () => {
             anchorEl={anchorEl}
             open={open}
             onClose={handleMenuClose}
-            onMouseLeave={handleMenuClose}
           >
             <MenuItem onClick={handleAllGenresClick}>All Genres</MenuItem>
             {loading && <Loader/>}
@@ -70,6 +76,19 @@ const Header = () => {
           </Menu>
         </span>
       </nav>
+      <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+        <TextField
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search movies..."
+          variant="outlined"
+          size="small"
+          className={styles.searchInput}
+        />
+        <Button type="submit" variant="contained" color="primary" size="medium">
+          Search
+        </Button>
+      </form>
     </header>
   );
 };
