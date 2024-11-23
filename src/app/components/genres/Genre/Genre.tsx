@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import {usePathname} from "next/navigation";
 
 import {IMovieResponse} from "@/app/models/movie-interface";
@@ -22,7 +22,7 @@ const Genre = ({genre, isActive, onGenreClick}: GenreProps) => {
 
   const isGenresPage = pathname.startsWith("/genres");
 
-  const fetchMoviesByGenre = async () => {
+  const fetchMoviesByGenre = useCallback(async () => {
     if (!genre) return;
 
     try {
@@ -34,13 +34,13 @@ const Genre = ({genre, isActive, onGenreClick}: GenreProps) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [genre]);
 
   useEffect(() => {
     if (genre) {
       void fetchMoviesByGenre();
     }
-  }, [genre?.id]);
+  }, [fetchMoviesByGenre, genre]);
 
   if (!genre) {
     return null;
@@ -59,7 +59,7 @@ const Genre = ({genre, isActive, onGenreClick}: GenreProps) => {
         {genre.name}
         {loading ? (
           <span className={styles.loaderWrapper}>
-            <Loader/>
+            <Loader />
           </span>
         ) : (
           <span className={styles.countBadge}>{movieCount}</span>

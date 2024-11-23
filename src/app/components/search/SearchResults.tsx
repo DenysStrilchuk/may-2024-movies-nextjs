@@ -41,7 +41,7 @@ const SearchResults = () => {
 
   return (
     <div className={styles.searchListContainer}>
-      <h1>Search Results for "{query}"</h1>
+      <h1>{`Search Results for "${query}"`}</h1>
       {loading && <Loader/>}
       {error && <div className={styles.errorText}>{error}</div>}
       {!loading && !error && results.length === 0 && (
