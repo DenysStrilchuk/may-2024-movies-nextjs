@@ -76,6 +76,7 @@ const Header = () => {
               </MenuItem>
             ))}
           </Menu>
+
         </span>
       </nav>
       <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
