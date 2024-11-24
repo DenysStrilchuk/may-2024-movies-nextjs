@@ -10,6 +10,7 @@ import {Routes} from "@/app/utils/routes";
 import {Loader} from "../../common/loader";
 import {useGenres} from "@/app/hooks/use-genres/useGenres";
 import styles from "./Header.module.css";
+import ThemeToggle from "@/app/components/common/theme-toogle/ThemeToggle";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -94,6 +95,7 @@ const Header = () => {
         <AccountCircleIcon className={styles.userIcon} />
         <span className={styles.userName}>Denys Strilchuk</span>
       </div>
+      <ThemeToggle/>
     </header>
   );
 };

@@ -7,7 +7,7 @@ import styles from './About.module.css';
 
 const About = () => {
   return (
-    <div className={styles.homePage}>
+    <div className={styles.aboutPage}>
       <header className={styles.header}>
         <h1>The Movies App</h1>
         <p>Your ultimate movie search app</p>
