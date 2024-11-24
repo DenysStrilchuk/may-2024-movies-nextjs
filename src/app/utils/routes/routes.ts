@@ -1,5 +1,5 @@
 export enum Routes {
-  HOME='/',
+  ABOUT='/',
   MOVIES='/movies',
   MOVIE='/movie',
   GENRES='/genres',

@@ -1,7 +1,7 @@
-import {Home} from "@/app/components/home/Home/Home";
+import {About} from "@/app/components/about/About/About";
 
 export default function HomePage() {
   return (
-    <Home/>
+    <About/>
   );
 }

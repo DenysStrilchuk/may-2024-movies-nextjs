@@ -44,12 +44,12 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link href={Routes.HOME} className={styles.title}>
+      <Link href={Routes.MOVIES} className={styles.title}>
         My app
       </Link>
       <nav>
-        <Link href={Routes.HOME} className={styles.link}>
-          <Button color="inherit">Home</Button>
+        <Link href={Routes.ABOUT} className={styles.link}>
+          <Button color="inherit">About</Button>
         </Link>
         <span>
           <Button
@@ -86,7 +86,7 @@ const Header = () => {
           size="small"
           className={styles.searchInput}
         />
-        <Button type="submit" variant="contained" color="primary" size="medium">
+        <Button type="submit" variant="contained" color="primary" size="large">
           Search
         </Button>
       </form>
