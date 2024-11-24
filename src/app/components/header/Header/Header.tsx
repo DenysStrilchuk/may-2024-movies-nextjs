@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import {Button, Menu, MenuItem, TextField} from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Іконка користувача з Material UI
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import {Routes} from "@/app/utils/routes";
 import {Loader} from "../../common/loader";
