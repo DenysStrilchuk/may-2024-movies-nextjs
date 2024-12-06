@@ -1,6 +1,8 @@
 import {baseUrl} from "../../constants";
 
-const accessToken = process.env.NEXT_PUBLIC_ACCESS_TOKEN;
+const accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNmEwZThhM2Q4M2I1NDM5ODA4YTdkOTU2NmNkN2ZlNSIsIm5iZiI6MTczM' +
+  'Tc1MTQ1MS43NjI5MTgsInN1YiI6IjY1ZDkwZTg1MzUyMGU4MDE0YWQ2MjI2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HqTo7' +
+  'U07hx9KaVXMoqBUer0f2aC9w0NPoNbNpM3Xwgo';
 
 const fetchWithAuth = async (url: string, options: RequestInit = {}, params?: Record<string, string | number>) => {
   const headers = {

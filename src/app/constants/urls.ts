@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_MOVIES_BASE_URL;
+const baseUrl = 'https://api.themoviedb.org/3';
 
 const urls = {
   movies: {
